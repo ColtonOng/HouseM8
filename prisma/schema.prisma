@@ -1,0 +1,57 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Person {
+  id            String   @id @default(cuid())
+  name          String   @unique
+  color         String
+  moveInItems   MoveInItem[]
+  groceryItems  GroceryItem[]
+  expenses      Expense[]
+  createdAt     DateTime @default(now())
+}
+
+model MoveInItem {
+  id          String   @id @default(cuid())
+  name        String
+  category    String   @default("Other")
+  estCost     Float    @default(0)
+  purchased   Boolean  @default(false)
+  notes       String?
+  addedBy     Person?  @relation(fields: [addedById], references: [id])
+  addedById   String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model GroceryItem {
+  id          String   @id @default(cuid())
+  name        String
+  category    String   @default("Other")
+  estPrice    Float    @default(0)
+  quantity    Int      @default(1)
+  purchased   Boolean  @default(false)
+  addedBy     Person?  @relation(fields: [addedById], references: [id])
+  addedById   String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Expense {
+  id          String   @id @default(cuid())
+  description String
+  amount      Float
+  category    String   @default("General")
+  owedPercent Float    @default(50) // % of amount the OTHER person owes back to paidBy
+  settled     Boolean  @default(false)
+  paidBy      Person?  @relation(fields: [paidById], references: [id])
+  paidById    String?
+  date        DateTime @default(now())
+  createdAt   DateTime @default(now())
+}
