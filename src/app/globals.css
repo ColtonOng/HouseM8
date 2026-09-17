@@ -1,73 +1,16 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --background: #f7f4ec;
   --foreground: #15343d;
-
-  /* Pacific Beach palette */
-  --color-ocean-50: #eef8fb;
-  --color-ocean-100: #d7eef4;
-  --color-ocean-200: #aedfea;
-  --color-ocean-300: #78c9db;
-  --color-ocean-400: #3fabc4;
-  --color-ocean-500: #1f8ba8;
-  --color-ocean-600: #146f8a;
-  --color-ocean-700: #135970;
-  --color-ocean-800: #14495b;
-  --color-ocean-900: #133d4d;
-
-  --color-sand-50: #fdfbf6;
-  --color-sand-100: #f7f2e6;
-  --color-sand-200: #f0e6cd;
-  --color-sand-300: #e4d3a8;
-  --color-sand-400: #d4ba7c;
-
-  --color-coral-400: #ff9472;
-  --color-coral-500: #ff7a52;
-  --color-coral-600: #f2603a;
-
-  --color-seafoam-400: #7bd9c4;
-  --color-seafoam-500: #4fc2ab;
-
-  --shadow-coastal: 0 1px 2px rgba(19, 61, 77, 0.06), 0 8px 24px rgba(19, 61, 77, 0.08);
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-
-  --color-ocean-50: var(--color-ocean-50);
-  --color-ocean-100: var(--color-ocean-100);
-  --color-ocean-200: var(--color-ocean-200);
-  --color-ocean-300: var(--color-ocean-300);
-  --color-ocean-400: var(--color-ocean-400);
-  --color-ocean-500: var(--color-ocean-500);
-  --color-ocean-600: var(--color-ocean-600);
-  --color-ocean-700: var(--color-ocean-700);
-  --color-ocean-800: var(--color-ocean-800);
-  --color-ocean-900: var(--color-ocean-900);
-
-  --color-sand-50: var(--color-sand-50);
-  --color-sand-100: var(--color-sand-100);
-  --color-sand-200: var(--color-sand-200);
-  --color-sand-300: var(--color-sand-300);
-  --color-sand-400: var(--color-sand-400);
-
-  --color-coral-400: var(--color-coral-400);
-  --color-coral-500: var(--color-coral-500);
-  --color-coral-600: var(--color-coral-600);
-
-  --color-seafoam-400: var(--color-seafoam-400);
-  --color-seafoam-500: var(--color-seafoam-500);
-
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 body {
   background:
-    radial-gradient(1200px 600px at 100% -10%, var(--color-ocean-100) 0%, transparent 60%),
-    radial-gradient(900px 500px at -10% 10%, var(--color-sand-200) 0%, transparent 55%),
+    radial-gradient(1200px 600px at 100% -10%, #d7eef4 0%, transparent 60%),
+    radial-gradient(900px 500px at -10% 10%, #f0e6cd 0%, transparent 55%),
     var(--background);
   color: var(--foreground);
   min-height: 100dvh;
@@ -76,25 +19,8 @@ body {
 .card {
   background: #ffffff;
   border-radius: 1.25rem;
-  box-shadow: var(--shadow-coastal);
-  border: 1px solid var(--color-sand-200);
-}
-
-.input {
-  width: 100%;
-  border-radius: 0.75rem;
-  border: 1px solid var(--color-sand-300);
-  background: var(--color-sand-50);
-  padding: 0.55rem 0.85rem;
-  font-size: 0.9rem;
-  color: var(--foreground);
-  outline: none;
-  transition: border-color 0.15s, box-shadow 0.15s;
-}
-
-.input:focus {
-  border-color: var(--color-ocean-400);
-  box-shadow: 0 0 0 3px var(--color-ocean-100);
+  box-shadow: 0 1px 2px rgba(19, 61, 77, 0.06), 0 8px 24px rgba(19, 61, 77, 0.08);
+  border: 1px solid #f0e6cd;
 }
 
 .wave-divider {
@@ -103,7 +29,24 @@ body {
   height: 36px;
 }
 
+.input {
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 1px solid #e4d3a8;
+  background: #fdfbf6;
+  padding: 0.55rem 0.85rem;
+  font-size: 0.9rem;
+  color: var(--foreground);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.input:focus {
+  border-color: #3fabc4;
+  box-shadow: 0 0 0 3px #d7eef4;
+}
+
 ::selection {
-  background: var(--color-coral-400);
+  background: #ff9472;
   color: white;
 }
